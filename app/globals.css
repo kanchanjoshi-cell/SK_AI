@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0c1118;
+  --panel: #121a24;
+  --panel-alt: #182230;
+  --border: #263241;
+  --text: #e8eef5;
+  --text-muted: #8b98a8;
+  --amber: #ffb454;
+  --teal: #4fd8a0;
+  --red: #ff6b6b;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-alt: var(--panel-alt);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-amber: var(--amber);
+  --color-teal: var(--teal);
+  --color-red: var(--red);
+  --font-display: "Avenir Next", "Century Gothic", Futura, ui-sans-serif, system-ui, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(255, 180, 84, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(79, 216, 160, 0.05), transparent 40%);
+}
+
+::selection {
+  background: rgba(255, 180, 84, 0.35);
+}
+
+.console-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.console-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+@keyframes flap-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.trace-line {
+  animation: flap-in 220ms ease-out both;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.live-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-line,
+  .live-dot {
+    animation: none !important;
+  }
+}
